@@ -436,6 +436,9 @@
 
 #pragma mark - gesture handle
 - (void)menuTapped:(UITapGestureRecognizer *)paramSender {
+    
+    __weak __typeof(&*self)weakSelf = self;
+    
     if (_dataSource == nil) {
         return;
     }
@@ -457,6 +460,11 @@
         [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_leftTableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
             _currentSelectedMenudIndex = tapIndex;
             _show = NO;
+            
+            //显示的block
+            if (weakSelf.showBlock) {
+                weakSelf.showBlock(_show);
+            }
         }];
     } else {
         _currentSelectedMenudIndex = tapIndex;
@@ -467,14 +475,26 @@
         
         [self animateIdicator:_indicators[tapIndex] background:_backGroundView tableView:_leftTableView title:_titles[tapIndex] forward:YES complecte:^{
             _show = YES;
+            
+            //显示的block
+            if (weakSelf.showBlock) {
+                weakSelf.showBlock(_show);
+            }
         }];
     }
 }
 
 - (void)backgroundTapped:(UITapGestureRecognizer *)paramSender
 {
+    __weak __typeof(&*self)weakSelf = self;
+    
     [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_leftTableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
         _show = NO;
+        
+        //显示的block
+        if (weakSelf.showBlock) {
+            weakSelf.showBlock(_show);
+        }
     }];
 }
 
@@ -772,6 +792,8 @@
 
 - (BOOL )confiMenuWithSelectRow:(NSInteger)row {
     
+    __weak __typeof(&*self)weakSelf = self;
+    
     _currentSelectRowArray[_currentSelectedMenudIndex] = @(row);
     
     
@@ -796,17 +818,30 @@
                         [DOPIndexPath indexPathWithCol:_currentSelectedMenudIndex row:self.isRemainMenuTitle ? 0 : row]];
         [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_leftTableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
             _show = NO;
+            
+            //显示的block
+            if (weakSelf.showBlock) {
+                weakSelf.showBlock(_show);
+            }
         }];
         return YES;
     }
 }
 - (void)confiMenuWithSelectItem:(NSInteger)item {
     
+    
+    __weak __typeof(&*self)weakSelf = self;
+    
     CATextLayer *title = (CATextLayer *)_titles[_currentSelectedMenudIndex];
     NSInteger currentSelectedMenudRow = [_currentSelectRowArray[_currentSelectedMenudIndex] integerValue];
     title.string = [_dataSource menu:self titleForItemsInRowAtIndexPath:[DOPIndexPath indexPathWithCol:_currentSelectedMenudIndex row:currentSelectedMenudRow item:item]];
     [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_leftTableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
         _show = NO;
+        
+        //显示的block
+        if (weakSelf.showBlock) {
+            weakSelf.showBlock(_show);
+        }
     }];
     
 }

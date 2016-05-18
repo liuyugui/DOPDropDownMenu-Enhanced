@@ -94,6 +94,8 @@
 @property (nonatomic, weak) id <DOPDropDownMenuDataSource> dataSource;
 @property (nonatomic, weak) id <DOPDropDownMenuDelegate> delegate;
 
+@property (nonatomic, copy) void(^showBlock)(BOOL); //显示的block
+
 @property (nonatomic, assign) UITableViewCellStyle cellStyle; // default value1
 @property (nonatomic, strong) UIColor *indicatorColor;      // 三角指示器颜色
 @property (nonatomic, strong) UIColor *textColor;           // 文字title颜色
