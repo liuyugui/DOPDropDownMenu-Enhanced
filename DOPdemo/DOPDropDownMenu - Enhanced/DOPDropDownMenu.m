@@ -112,11 +112,13 @@
 #define kTableViewHeight 300
 #define kButtomImageViewHeight 21
 
-#define kTextColor [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]
+//#define kTextColor [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]
+#define kTextColor [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1]
 #define kDetailTextColor [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1]
 #define kSeparatorColor [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1]
 #define kCellBgColor [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1]
-#define kTextSelectColor [UIColor colorWithRed:246/255.0 green:79/255.0 blue:0/255.0 alpha:1]
+//#define kTextSelectColor [UIColor colorWithRed:246/255.0 green:79/255.0 blue:0/255.0 alpha:1]
+#define kTextSelectColor [UIColor colorWithRed:33/255.0 green:34/255.0 blue:36/255.0 alpha:1]
 
 @implementation DOPDropDownMenu {
     CGFloat _tableViewHeight;
@@ -273,7 +275,8 @@
         [self.layer addSublayer:title];
         [tempTitles addObject:title];
         //indicator
-        CAShapeLayer *indicator = [self createIndicatorWithColor:self.indicatorColor andPosition:CGPointMake((i + 1)*separatorLineInterval - 10, self.frame.size.height / 2)];
+        //CAShapeLayer *indicator = [self createIndicatorWithColor:self.indicatorColor andPosition:CGPointMake((i + 1)*separatorLineInterval - 10, self.frame.size.height / 2)];
+        CAShapeLayer *indicator = [self createIndicatorWithColor:self.indicatorColor andPosition:CGPointMake(i*separatorLineInterval + (separatorLineInterval - textLayerInterval)/2 + textLayerInterval-30, self.frame.size.height / 2+2)];
         [self.layer addSublayer:indicator];
         [tempIndicators addObject:indicator];
         
