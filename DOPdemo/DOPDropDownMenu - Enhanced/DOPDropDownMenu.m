@@ -276,7 +276,7 @@
         [tempTitles addObject:title];
         //indicator
         //CAShapeLayer *indicator = [self createIndicatorWithColor:self.indicatorColor andPosition:CGPointMake((i + 1)*separatorLineInterval - 10, self.frame.size.height / 2)];
-        CAShapeLayer *indicator = [self createIndicatorWithColor:self.indicatorColor andPosition:CGPointMake(i*separatorLineInterval + (separatorLineInterval - textLayerInterval)/2 + textLayerInterval-30, self.frame.size.height / 2+2)];
+        CAShapeLayer *indicator = [self createIndicatorWithColor:self.indicatorColor andPosition:CGPointMake(i*separatorLineInterval + (separatorLineInterval - textLayerInterval)/2 + textLayerInterval-45, self.frame.size.height / 2+2)];
         [self.layer addSublayer:indicator];
         [tempIndicators addObject:indicator];
         
