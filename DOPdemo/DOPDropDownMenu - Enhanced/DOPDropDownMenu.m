@@ -258,7 +258,7 @@
     for (int i = 0; i < _numOfMenu; i++) {
         //bgLayer
         CGPoint bgLayerPosition = CGPointMake((i+0.5)*bgLayerInterval, self.frame.size.height/2);
-        CALayer *bgLayer = [self createBgLayerWithColor:[UIColor whiteColor] andPosition:bgLayerPosition];
+        CALayer *bgLayer = [self createBgLayerWithColor:[UIColor colorWithRed:242/255. green:242/255. blue:242/255. alpha:1.f] andPosition:bgLayerPosition];
         [self.layer addSublayer:bgLayer];
         [tempBgLayers addObject:bgLayer];
         //title
